@@ -10,8 +10,23 @@ import SwiftUI
 struct WeatherView: View {
     var weather: ResponseBody
     
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .leading, content: {
+            VStack {
+                Text(weather.name)
+                    .bold().font(.title)
+                
+                Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
+                    .fontWeight(.light)
+                Spacer()
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+            .padding()
+        }
+        ).edgesIgnoringSafeArea(.bottom)
+            .background(Color(red: 0.6, green: 0.3, blue: 0.6, opacity: 1.0))
+            .preferredColorScheme(.dark)
     }
 }
 
